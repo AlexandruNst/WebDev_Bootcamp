@@ -1,0 +1,66 @@
+* {
+    color: #000;
+}
+
+button {
+    font-size: 20px;
+}
+
+h1,
+h2 {
+    color: magenta;
+}
+
+body {
+    background-color: #f1faee;
+}
+
+#signup {
+    background-color: yellow;
+    color: blue;
+}
+
+span {
+    color: #457b9d;
+}
+
+.tag {
+    background-color: #e63946;
+    color: white;
+}
+
+li a {
+    /*all a inside li. no li is affected, or any other a's*/
+    color: pink;
+}
+
+h2+button {
+    /*the buttons DIRECTLY ADJACENT to h2*/
+    background-color: pink;
+}
+
+footer>a {
+    /*an a that is the DIRECT DESCENDANT of footer*/
+    color: purple;
+}
+
+input[type="password"] {
+    /*only password inputs*/
+    color: greenyellow;
+}
+
+button:hover {
+    background-color: #e63946;
+}
+
+li a:nth-of-type(2) {
+    color: green;
+}
+
+h2::first-letter {
+    font-size: 60px;
+}
+
+h2::selection {
+    background-color: aqua;
+}
