@@ -1,8 +1,15 @@
 h1 {
     color: teal;
+    text-align: center;
+    text-decoration: yellow underline;
 }
 
-button {
-    color: magenta;
-    background-color: cyan;
+p {
+    /* font-weight: bolder;
+    text-decoration: line-through;
+    line-height: 2;
+    letter-spacing: 4; */
+    font-size: 50px;
+    font-family: Arial;
+    text-decoration: ;
 }
