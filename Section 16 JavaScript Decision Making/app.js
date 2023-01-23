@@ -26,3 +26,20 @@ if (age < 5) {
 } else {
     console.log("You are a senior");
 }
+
+let day = 2;
+switch (day) {
+    case 1:
+        console.log('MONDAY');
+        break;
+    case 2:
+        console.log('Tuesday');
+        break;
+    case 6:
+    case 7:
+        console.log('Weekend');
+        break;
+    default:
+        console.log('Other day')
+        break;
+}
