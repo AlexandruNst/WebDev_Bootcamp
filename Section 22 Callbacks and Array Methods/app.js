@@ -13,3 +13,7 @@ numbers.forEach(function (el) {
 })
 
 /////
+
+let doubles = numbers.map(function (num) {
+    return num * 2;
+})
