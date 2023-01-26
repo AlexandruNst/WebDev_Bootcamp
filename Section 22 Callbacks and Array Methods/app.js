@@ -37,3 +37,8 @@ const squared = x => x * x;
 let arr = numbers.filter(n => {
     return n <= 10;
 })
+
+///
+
+let allSmall = numbers.every(n => n < 20);
+let someVerySmall = numbers.some(n => n < 5);
