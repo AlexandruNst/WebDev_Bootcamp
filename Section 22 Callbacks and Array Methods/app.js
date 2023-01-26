@@ -17,3 +17,17 @@ numbers.forEach(function (el) {
 let doubles = numbers.map(function (num) {
     return num * 2;
 })
+
+/////
+
+const square = (x) => {
+    return x * x;
+}
+
+const greet = () => console.log("Hi! :)")
+
+//////
+
+const rollDie = () => (Math.floor(Math.random() * 6) + 1);
+const add = (a, b) => a + b;
+const squared = x => x * x;
