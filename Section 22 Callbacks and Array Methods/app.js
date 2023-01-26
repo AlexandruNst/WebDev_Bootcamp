@@ -42,3 +42,9 @@ let arr = numbers.filter(n => {
 
 let allSmall = numbers.every(n => n < 20);
 let someVerySmall = numbers.some(n => n < 5);
+
+/////
+
+let sum = numbers.reduce((total, num) => {
+    return total + num;
+})
