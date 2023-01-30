@@ -70,3 +70,42 @@ login("myusername", "corgisarecute")
         console.log(msg);
     }
     )
+
+//////////////////////////////
+
+async function rainbow() {
+    await delayedColorChange('red', 1000);
+    await delayedColorChange('orange', 1000);
+    await delayedColorChange('yellow', 1000);
+    await delayedColorChange('green', 1000);
+    await delayedColorChange('blue', 1000);
+    await delayedColorChange('indigo', 1000);
+    await delayedColorChange('purple', 1000);
+    return "Rainbow DONE!" //this is a promise!
+}
+
+rainbow().then(msg => {
+    console.log("ALL DONE!");
+    console.log(msg);
+})
+
+// OR
+
+async function printRainbow() {
+    await rainbow();
+    console.log("END OF RAINBOW!");
+}
+
+
+async function makeRequest() {
+    try {
+        let data1 = await fakeRequest("/page1");
+        let data2 = await fakeRequest("/page2");
+        console.log(data1, data2);
+    } catch (e) {
+        console.log("CAUGHT AN ERROR!!!");
+        console.log("Error: ", e);
+    }
+}
+
+makeRequest();
