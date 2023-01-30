@@ -50,3 +50,23 @@ delayedColorChange("red", 1000)
     .then(() => delayedColorChange("green", 1000))
     .then(() => delayedColorChange("blue", 1000))
     .then(() => delayedColorChange("purple", 1000))
+
+
+/////////////////////////
+
+const login = async (username, password) => {
+    if (!username || !password) throw "Missing Credentials!";
+    if (password === "corgisarecute") return "WELCOME!";
+    throw "Invalid password";
+}
+
+login("myusername", "corgisarecute")
+    .then(msg => {
+        console.log("Logged in!");
+        console.log(msg);
+    })
+    .catch(msg => {
+        console.log("ERROR!");
+        console.log(msg);
+    }
+    )
