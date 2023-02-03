@@ -15,6 +15,16 @@ app.get("/rand", (req, res) => {
     res.render("random", { rand: num });
 })
 
+app.get("/r/:subreddit", (req, res) => {
+    const { subreddit } = req.params;
+    res.render("subreddit", { subreddit })
+})
+
+app.get("/cats", (req, res) => {
+    const cats = ["Blue", "Rocket", "Ricky"];
+    res.render("cats", { cats })
+})
+
 app.listen(3000, () => {
     console.log("LISTENING ON PORT 3000")
 })
