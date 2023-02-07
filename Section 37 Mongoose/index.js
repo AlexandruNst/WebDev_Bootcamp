@@ -24,16 +24,24 @@ const Movie = mongoose.model("Movie", movieSchema);
 // const amadeus = new Movie({ title: "Amadeus", year: 1986, score: 9.2, rating: "R" });
 // amadeus.save();
 
-// this returns a promise
-Movie.insertMany([
-    { title: "Alien", year: 1979, score: 8.1, rating: "R" },
-    { title: "The Iron Giant", year: 1999, score: 7.5, rating: "PG" }
-])
-    .then(data => {
-        console.log("IT WORKED!");
-        console.log(data);
-    })
+// // this returns a promise
+// Movie.insertMany([
+//     { title: "Alien", year: 1979, score: 8.1, rating: "R" },
+//     { title: "The Iron Giant", year: 1999, score: 7.5, rating: "PG" }
+// ])
+//     .then(data => {
+//         console.log("IT WORKED!");
+//         console.log(data);
+//     })
 
+Movie.findOne();
+Movie.findById();
+Movie.updateOne({}, {});
+Movie.updateMany({}, {});
+Movie.remove();
+
+Movie.findByIdAndDelete();
+Movie.findByIdAndUpdate();
 
 
 
