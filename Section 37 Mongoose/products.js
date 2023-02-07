@@ -14,7 +14,7 @@ const productSchema = new mongoose.Schema({
     },
     price: {
         type: Number,
-        min: 0
+        min: [0, "Price must be positive ya dodo!"]
     },
     onSale: {
         type: Boolean,
@@ -50,3 +50,5 @@ bike.save()
         console.log("ON HO ERROR!");
         console.log(err);
     })
+
+Product.findByIdAndUpdate({}, {}, { runValidators: true }); //will make sure our Validations are checked on update. Otherwise, they're not, by default.
