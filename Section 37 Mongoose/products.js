@@ -52,3 +52,30 @@ bike.save()
     })
 
 Product.findByIdAndUpdate({}, {}, { runValidators: true }); //will make sure our Validations are checked on update. Otherwise, they're not, by default.
+
+// this function will be available to ALL INSTANCES of Product
+// defined on the model
+// INSTANCE METHODS
+// these live on INSTANCES of the model
+// this refers to individual instances
+productSchema.methods.greet = function () {
+    console.log("Hi!");
+    this.onSale = !this.onSale;
+    return this.save(); // save() returns a Promise
+}
+
+const findProduct = async () => {
+    const foundProduct = await Product.findOne({ name: "Mountain Bike" })
+    await foundProduct.greet();
+    console.log(foundProduct);
+}
+
+// this function is defined on the Product STATICALLY
+// STATIC METHODS
+// we call it on the model (capital letter) NOT on individual objects
+// these don't have to do with individual products, but rather all products or the Product model in general
+productSchema.statics.fireSale = function () {
+    return this.updateMany({}, { onSale: true, price: 0 }) //also returns a Promise
+}
+
+Product.fireSale().then(data => console.log(data));
