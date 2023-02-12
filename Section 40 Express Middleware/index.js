@@ -19,6 +19,15 @@ app.use("/dogs", (req, res, next) => {
     next();
 })
 
+const verifyPassword = (req, res, next) => {
+    const { password } = req.query;
+    if (password === "chickennugget") {
+        next();
+    } else {
+        res.send("SORRY YOU NEED A PASSWORD");
+    }
+}
+
 app.get("/", (req, res) => {
     res.send("Home :)");
 })
@@ -26,6 +35,10 @@ app.get("/", (req, res) => {
 app.get("/dogs", (req, res) => {
     console.log(req.requestTime);
     res.send("Woof Woof");
+})
+
+app.get("/secret", verifyPassword, (req, res) => {
+    res.send("BIG SECRET!")
 })
 
 // This middleware will only run if nothing else is send before, i.e. nothing matched i.e. a 404
