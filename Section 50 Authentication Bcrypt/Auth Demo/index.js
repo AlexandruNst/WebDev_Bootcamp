@@ -19,16 +19,24 @@ app.use(express.urlencoded());
 // to use sessions
 app.use(session({ secret: "not a good secret" }));
 
+const requireLogin = (req, res, next) => {
+    if (!req.session.user_id) {
+        res.redirect("/login");
+    } else {
+        next();
+    }
+}
+
 app.get("/", (req, res) => {
     res.send("Home page");
 })
 
-app.get("/secret", (req, res) => {
-    if (req.session.user_id) {
-        res.render("secret");
-    } else {
-        res.redirect("login");
-    }
+app.get("/secret", requireLogin, (req, res) => {
+    res.render("secret");
+})
+
+app.get("/topsecret", requireLogin, (req, res) => {
+    res.send("TOP SECRET")
 })
 
 app.get("/register", (req, res) => {
@@ -37,11 +45,7 @@ app.get("/register", (req, res) => {
 
 app.post("/register", async (req, res) => {
     const { password, username } = req.body;
-    const hash = await bcrypt.hash(password, 12);
-    const user = new User({
-        username,
-        password: hash
-    });
+    const user = new User({ username, password });
     await user.save();
     req.session.user_id = user._id;
     res.redirect("/");
@@ -53,10 +57,9 @@ app.get("/login", (req, res) => {
 
 app.post("/login", async (req, res) => {
     const { password, username } = req.body;
-    const user = await User.findOne({ username });
-    const validPassword = await bcrypt.compare(password, user.password);
-    if (validPassword) {
-        req.session.user_id = user._id;
+    const foundUser = await User.findAndValidate(username, password);
+    if (foundUser) {
+        req.session.user_id = foundUser._id;
         res.redirect("/secret");
     } else {
         res.redirect("/login");
